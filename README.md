@@ -5,3 +5,4 @@ Skill radar project
 
 1:30 am - Sunday, 20 September 2020 (IST)  : Added documentation
 
+1:32 am - Sunday, 20 September 2020 (IST)  : Service person login fix
