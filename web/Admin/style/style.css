@@ -1,0 +1,46 @@
+.navbar {
+	border-radius: 0px;
+	position: sticky;
+}
+
+.heading {
+	background-color: #FFFFFF;
+	height: 100px;
+}
+
+.box {
+	border: solid red 2px;
+}
+
+.slider-div{
+	
+}
+
+.tag-line{
+	vertical-align:	bottom;
+	padding-top: 60px;
+}
+
+.section-heading
+{
+	color: white;
+	background-color: #000000;
+}
+
+.section-hr
+{
+	background-color: black;
+	height: 2px;	
+}
+.title{
+	background-color: grey;
+}
+.section-hr-container{
+	padding-top: 15px;
+}
+
+.signup-page{
+	background-image: url('images/bg/signup.jpg');
+	background-size: cover;
+}
+
