@@ -14,3 +14,6 @@ Skill radar project
 3:25 am - Sunday, 20 September 2020 (IST)  : Emulator for moving service man added
 
 3:58 am - Sunday, 20 September 2020 (IST)  : Added location of user to each bookings
+
+5:28 am - Sunday, 20 September 2020 (IST): Service person can accept the booking
+
