@@ -82,6 +82,7 @@
                                     int rc = 0;
                                     while (rs.next()) {
 
+                                        String providerId = "";
                                         String providerName = "";
                                         String ProviderLocation = "";
                                         double Distance = 0;
@@ -90,6 +91,7 @@
                                         PreparedStatement p2 = con.prepareStatement("SELECT * FROM `sr_service_man` WHERE  `sr_service_man`.`ser_id`='" + rs.getString("sp_provider") + "'");
                                         ResultSet rs1 = p2.executeQuery();
                                         while (rs1.next()) {
+                                            providerId = rs1.getString("ser_id");
                                             providerName = rs1.getString("ser_name");
                                             ProviderLocation = rs1.getString("ser_location");
                                         }
@@ -112,7 +114,7 @@
                                     }
                                     %></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary">Make a booking</button>
+                                    <button type="button" class="btn btn-primary" onclick="window.location='Make_a_Booking.jsp?provider=<%=providerId%>&customer=<%=request.getParameter("serviceId")%>&service=10'">Make a booking</button>
                                 </td>
                             </tr>
                             <%
