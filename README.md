@@ -1,4 +1,4 @@
-# skill-radar
+# skill-radar : Time line
 Skill radar project
 
 12:54 am - Sunday, 20 September 2020 (IST) : Initial commit
@@ -10,3 +10,5 @@ Skill radar project
 2:35 am - Sunday, 20 September 2020 (IST)  : User booking initiates
 
 2:55 am - Sunday, 20 September 2020 (IST)  : User booking completed
+
+2:55 am - Sunday, 20 September 2020 (IST)  : Emulator for moving service man added
