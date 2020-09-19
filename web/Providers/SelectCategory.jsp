@@ -20,7 +20,7 @@ Connection con=null;
 %>
 
 <%@include  file="includes/header.jsp"%>
-<% Provider p=(Provider)session.getAttribute("provider"); %>
+<% int p=Integer.parseInt(session.getAttribute("provider").toString()); %>
         <div class="container-fluid slider-div">
             <div class="row">
                 <div class="col-md-3 col-xs-1"></div>
@@ -78,7 +78,7 @@ Connection con=null;
 							<tbody>
 								<%
 								
-                                                                   PreparedStatement p1=con.prepareStatement("SELECT `sr_services_provided`.*,`sr_service_cat`.Cat_name FROM `sr_services_provided` INNER JOIN `sr_service_cat` ON `sr_services_provided`.`sp_category`=`sr_service_cat`.`Cat_id` WHERE sp_provider='"+p.getId()+"'");
+                                                                   PreparedStatement p1=con.prepareStatement("SELECT `sr_services_provided`.*,`sr_service_cat`.Cat_name FROM `sr_services_provided` INNER JOIN `sr_service_cat` ON `sr_services_provided`.`sp_category`=`sr_service_cat`.`Cat_id` WHERE sp_provider='"+p+"'");
                                                                    ResultSet rs=p1.executeQuery();
                                                                    int rc=0;
 									while(rs.next()) {
@@ -109,7 +109,7 @@ Connection con=null;
     
 if(request.getParameter("insert")!=null)
 {
-    PreparedStatement psmt=con.prepareStatement("INSERT INTO `sr_services_provided` (`sp_category`,`sp_provider`, `sp_service`) VALUES ('"+request.getParameter("cat")+"','"+p.getId()+"','"+request.getParameter("service")+"')");
+    PreparedStatement psmt=con.prepareStatement("INSERT INTO `sr_services_provided` (`sp_category`,`sp_provider`, `sp_service`) VALUES ('"+request.getParameter("cat")+"','"+p+"','"+request.getParameter("service")+"')");
     psmt.executeUpdate();
     %>
     <script>

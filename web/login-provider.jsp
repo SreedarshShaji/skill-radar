@@ -77,7 +77,7 @@ if(request.getParameterMap().containsKey("message"))
                 <div class="col-md-1 col-xs-1"></div>
                 <div class="col-md-10 col-xs-10">
                     <div class="alert alert-<%=request.getParameter("type") %>" role="alert">
-                        <%=request.getParameter("message") %>
+                        <center><%=request.getParameter("message") %></center>
                     </div>
                 </div>
                 <div class="col-md-1 col-xs-1"></div>
