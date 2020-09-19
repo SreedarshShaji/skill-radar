@@ -10,8 +10,10 @@
     String provider=request.getParameter("provider");
     String customer=request.getParameter("customer");
     String service=request.getParameter("service");
+    String userLocation=request.getParameter("loc");
     
-    PreparedStatement psmt= con.prepareStatement("INSERT INTO `sr_booking` (`book_provider`, `book_customer`, `book_service`) VALUES ('"+provider+"', '"+customer+"', '"+service+"')");
+    
+    PreparedStatement psmt= con.prepareStatement("INSERT INTO `sr_booking` (`book_provider`, `book_customer`, `book_service`,`user_location`) VALUES ('"+provider+"', '"+customer+"', '"+service+"','"+userLocation+"')");
     int i = psmt.executeUpdate();
     
 %>

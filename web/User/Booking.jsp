@@ -114,7 +114,7 @@
                                     }
                                     %></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" onclick="window.location='Make_a_Booking.jsp?provider=<%=providerId%>&customer=<%=request.getParameter("serviceId")%>&service=10'">Make a booking</button>
+                                    <button type="button" class="btn btn-primary" onclick="window.location='Make_a_Booking.jsp?provider=<%=providerId%>&customer=<%=customer %>&service=<%=request.getParameter("serviceId") %>&loc=<%=request.getParameter("loc") %>'">Make a booking</button>
                                 </td>
                             </tr>
                             <%
