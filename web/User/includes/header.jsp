@@ -4,8 +4,8 @@
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% 
-    Customer provider=(Customer)session.getAttribute("customer"); 
-    if(provider==null){
+    int provider=Integer.parseInt(session.getAttribute("customer").toString()); 
+    if(provider==0){
     %>
         <script>
             alert("Please login");
@@ -64,7 +64,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class=""></span>
-                                <%=provider.getName() %></a></li>
+                               </a></li>
                         <li><a href="includes/logout.jsp"><span class="glyphicon glyphicon-log-in"></span>
                                 Log Out</a></li>
                     </ul>

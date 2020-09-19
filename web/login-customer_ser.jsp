@@ -1,28 +1,40 @@
-<%@page import="java.util.LinkedList"%>
-<%@page  import="com.SkillRadar.Entites.*,com.SkillRadar.Entites.ORM.CustomerORM"%>
+<%@page import="com.SkillRadar.Entites.Provider"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page  import="com.SkillRadar.Entites.ORM.DBconnect;"%>
 <%
 
-CustomerORM oRM=new CustomerORM();
-
-Customer existingCustomers=oRM.getCustomer(request.getParameter("email"), request.getParameter("password"));
-
-if(existingCustomers!=null)
-{
-    session.setAttribute("customer", existingCustomers);
-    %>
+    String email = request.getParameter("email");
+    String pass = request.getParameter("password");
     
-    <script>
-        window.location = "login-customer.jsp?type=success&message=The credentials match";
-    </script>
-    <%
-}
-else
-{
-    %>
-    <script>
-        window.location = "login-customer.jsp?type=danger&message=The credentials dosn't match";
-    </script>
-    <%
-}
+    DBconnect connector = new DBconnect();
+    Connection con = connector.getConnection();
+    PreparedStatement psmt = con.prepareStatement("SELECT * FROM `sr_user` where `us_email`='"+email+"' AND `us_password`='"+pass+"'");
+
+    boolean flag = false;
+    String id ="";
+    ResultSet rs = psmt.executeQuery();
+    
+    while(rs.next()){
+        id= rs.getString(1);
+        flag=true;
+    }
+    
+    if (flag) {
+         
+        session.setAttribute("customer",id);
+%>
+<script>
+    window.location = "User/";
+</script>
+<%
+} else {
+%>
+<script>
+    window.location = "login-provider.jsp?type=danger&message=<strong>warning: </strong>The credentials dosn't match";
+</script>
+<%
+    }
 
 %>
