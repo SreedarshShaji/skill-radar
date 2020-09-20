@@ -15,5 +15,6 @@ Skill radar project
 
 3:58 am - Sunday, 20 September 2020 (IST)  : Added location of user to each bookings
 
-5:28 am - Sunday, 20 September 2020 (IST): Service person can accept the booking
+5:28 am - Sunday, 20 September 2020 (IST)  : Service person can accept the booking
 
+1:26 am - Monday, 21 September 2020 (IST)  : Code for delivery
