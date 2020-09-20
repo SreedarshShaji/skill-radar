@@ -82,7 +82,7 @@
 		
 		
 		if (email.equals("admin")&&password.equals("admin")) {
-			response.sendRedirect("Admin_Home.jsp");
+			response.sendRedirect("Admin_Add_Categories.jsp");
 		} 
 		else
 		{

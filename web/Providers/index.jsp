@@ -1,30 +1,6 @@
 <%@page import="com.SkillRadar.Entites.Provider"%>
 <%@include  file="includes/header.jsp"%>
-<%  Cookie cookie = null;
-    Cookie[] cookies = null;
 
-    // Get an array of Cookies associated with the this domain
-    cookies = request.getCookies();
-
-    if (cookies != null) {
-
-        for (int i = 0; i < cookies.length; i++) {
-            cookie = cookies[i];
-            out.print("Name : " + cookie.getName() + ",  ");
-        }
-    } else {
-        %>
-        <div class="row">    
-                <div class="col-md-1 col-xs-1"></div>
-                <div class="col-md-10 col-xs-10">
-                    <div class="alert alert-warning" role="alert">
-                        Cookie malfunction, page may not work properly
-                    </div>
-                </div>
-                <div class="col-md-1 col-xs-1"></div>
-            </div>
-        <%
-    }%>
 <div class="container-fluid slider-div">
     <div class="row">
         <div class="col-md-3 col-xs-1"></div>

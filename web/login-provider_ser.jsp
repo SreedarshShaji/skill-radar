@@ -26,7 +26,7 @@
         session.setAttribute("provider",id);
 %>
 <script>
-    window.location = "Providers/";
+    window.location = "Providers/See_bookings.jsp";
 </script>
 <%
 } else {

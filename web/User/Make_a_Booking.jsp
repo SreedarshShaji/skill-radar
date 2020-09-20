@@ -15,5 +15,5 @@
     
     PreparedStatement psmt= con.prepareStatement("INSERT INTO `sr_booking` (`book_provider`, `book_customer`, `book_service`,`user_location`) VALUES ('"+provider+"', '"+customer+"', '"+service+"','"+userLocation+"')");
     int i = psmt.executeUpdate();
-    
+    response.sendRedirect("user_see_bookings.jsp");
 %>

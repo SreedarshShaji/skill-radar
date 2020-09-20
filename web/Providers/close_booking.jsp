@@ -13,11 +13,10 @@
     DBconnect connector = new DBconnect();
     Connection con = connector.getConnection();
     
-    int id=Integer.parseInt(request.getParameter("booking_id"));
-    String message = request.getParameter("message");
+    int id=Integer.parseInt(request.getParameter("id"));
     
     
-    PreparedStatement psmt= con.prepareStatement("UPDATE `sr_booking` SET `book_status` = 'Rejected', `book_review` = '"+message+"' WHERE `sr_booking`.`book_id` = "+id);
+    PreparedStatement psmt= con.prepareStatement("UPDATE `sr_booking` SET `book_status` = 'Completed' WHERE `sr_booking`.`book_id` = "+id);
     int i = psmt.executeUpdate();
     response.sendRedirect("See_bookings.jsp");
 %>

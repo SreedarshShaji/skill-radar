@@ -26,7 +26,7 @@
         session.setAttribute("customer",id);
 %>
 <script>
-    window.location = "User/";
+    window.location = "User/Booking.jsp";
 </script>
 <%
 } else {

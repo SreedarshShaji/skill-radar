@@ -27,7 +27,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 align="center">Add Services provided</h2>
+                    <h2 align="center">Select a service to book</h2>
                 </div>
                 <div class="panel-body">
                     <form action="" method="post">
@@ -36,8 +36,10 @@
                         %>
                         <div class="form-group">
                             <label for="email">Select Category:</label> 
-                            <select class="form-control" id="email" name="cat">
-                                <option value="none">Select</option>
+                            <select class="form-control" id="email" name="cat" onchange="makeList(this.value)">
+                                <option value="none"
+                                        onclick=""
+                                        >Select</option>
                                 <%
                                     for (ServiceCategory cat : cats) {
                                         out.print("<option value='" + cat.getId() + "'>");
@@ -46,11 +48,19 @@
                                     }
                                 %>
                             </select>
-                            <input type="text" class="form-control" id="loc" name="loc">
+                            <input type="hidden" class="form-control" id="loc" name="loc">
                         </div>
 
 
                     </form>
+                            
+                            <script>
+                                function makeList(value)
+                                {
+                                    let location = document.getElementById("loc").value;
+                                    window.location = "Booking.jsp?serviceId="+value+"&loc="+location;
+                                }
+                            </script>
                 </div>
             </div>
         </div>

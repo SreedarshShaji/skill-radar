@@ -17,22 +17,81 @@
         System.out.println(ex.getMessage());
     }
 %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 
-<%@include  file="includes/header.jsp"%>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap connections -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<!-- Connection to custom css page -->
+<link rel="stylesheet" href="style/style.css">
+
+<!-- Sticky navbar -->
+<script type="text/javascript" src="script/sticky-nav-bar.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3 col-xs-10">
+				<img src="images/logo.png" class="img-fluid" height="100px" />
+			</div>
+			<div class="col-md-9 col-xs-1"></div>
+		</div>
+	</div>
+
+
+	<!-- Navbar start -->
+	<nav class="navbar navbar-inverse stick-nav">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Skill Radar</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav" id="navbar">
+                                    <li class="active"><a href="Admin_Add_Categories.jsp">Home</a></li>
+                                    <li><a href="Admin_Approve_Provider.jsp">Providers</a></li>
+                                    <li><a href="Admin_see_bookings.jsp">Booking</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="../"><span class="glyphicon glyphicon-log-in"></span>
+							Log Out</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Navbar end -->
+
 <% int p = Integer.parseInt(session.getAttribute("provider").toString()); %>
-<div class="container-fluid slider-div">
-    <div class="row">
-        <div class="col-md-2 col-xs-1"></div>
-        <div class="col-md-8 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 align="center">All Bookings</h2>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
+    <div class="container">
+		<div class="row">
+			<div class="col-md-3 section-hr-container">
+				<hr class="section-hr">
+			</div>
+			<div class="col-md-6 " align="center">
+				<h2 class="section-heading">Add Bookings</h2>
+			</div>
+			<div class="col-md-3 section-hr-container">
+				<hr class="section-hr">
+			</div>
+		</div>
+	</div>
+	<br>
 
 <!-- Table -->
 
@@ -95,33 +154,7 @@
                                 <td>
                                     <%=rs.getString("book_status")%>
                                 </td>
-                                <td>
-                                    <%
-
-                                        if (rs.getString("book_status").equals("Open")) {
-                                    %>
-                                    <button type="button" class="btn btn-success" onclick="window.location = 'accept_booking.jsp?id=<%=rs.getString("book_id")%>'">Accept</button><hr>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" onclick="setTheBookingId(<%=rs.getString("book_id") %>)">Reject</button>
-
-                                    <%
-                                    } else if (rs.getString("book_status").equals("In Progress")) {
-                                    %>
-                                <td><a href="https://www.google.com/maps/place/<%=rs.getString("user_location") %>/@<%=rs.getString("user_location") %>,16z" target="_blank"><button class="btn btn-info">View on map</button></a><hr>
-                                <button type="button" class="btn btn-success" onclick="window.location = 'close_booking.jsp?id=<%=rs.getString("book_id")%>'">Close Booking</button></td>
-                                    
-                                    <%
-                                        }
-
-                                    %>
-                                </td>
-                                <% //if(rs.getString("book_status").equals("Completed") && (rs.getInt("book_rating")>0 || !rs.getString("user_comment").equals("-")))
-                                {
-                                %>
-                                <!--td><strong>Rating : </strong><%//=rs.getString("book_rating")%></td>
-                                <td><strong>Review : </strong><%//=rs.getString("user_comment")%></td-->
-                                <%
-                                } 
-                                %>
+                               
                             </tr>
                             <%                                }
                             %>

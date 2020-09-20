@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Bootstrap Example</title>
+<title>Skill Radar</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -56,10 +56,9 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav" id="navbar">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Providers</a></li>
-					<li><a href="#">Feedback</a></li>
+                                    <li class="active"><a href="Admin_Add_Categories.jsp">Home</a></li>
+                                    <li><a href="Admin_Approve_Provider.jsp">Providers</a></li>
+<!--                                    <li><a href="Admin_see_bookings.jsp">Booking</a></li>-->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>

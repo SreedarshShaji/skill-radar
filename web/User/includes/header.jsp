@@ -4,8 +4,7 @@
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% 
-    int provider=Integer.parseInt(session.getAttribute("customer").toString()); 
-    if(provider==0){
+    if(session.getAttribute("customer")==null){
     %>
         <script>
             alert("Please login");
@@ -53,14 +52,12 @@
                         <span class="icon-bar"></span> <span class="icon-bar"></span> <span
                             class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Skill Radar</a>
+                    <a class="navbar-brand" href="">Skill Radar</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav" id="navbar">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Providers</a></li>
-                        <li><a href="#">Feedback</a></li>
+                        <li><a href="Booking.jsp">Make a Booking</a></li>
+                        <li><a href="user_see_bookings.jsp">See all Bookings</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class=""></span>

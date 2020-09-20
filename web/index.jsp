@@ -248,9 +248,9 @@
                         <h4 class="modal-title" align="center">Signup to Account</h4>
                     </div>
                     <div class="modal-body">
-                        <button class="btn btn-info" style="width: 100%" onclick="window.location='signup-customer.jsp'">Signup as service Provider</button>
+                        <button class="btn btn-info" style="width: 100%" onclick="window.location='signup-provider.jsp'">Signup as service Provider</button>
                         <hr style="opacity: 0;">
-                        <button class="btn btn-info" style="width: 100%" onclick="window.location='signup-provider.jsp'">Signup as Customer	</button>
+                        <button class="btn btn-info" style="width: 100%" onclick="window.location='signup-customer.jsp'">Signup as Customer	</button>
                     </div> 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -270,9 +270,11 @@
                         <h4 class="modal-title" align="center">Login to Account</h4>
                     </div>
                     <div class="modal-body">
-                        <button class="btn btn-info" style="width: 100%" onclick="window.location='login-customer.jsp'">Login as service Provider</button>
+                        <button class="btn btn-info" style="width: 100%" onclick="window.location='Admin/'">Login as Admin</button>
                         <hr style="opacity: 0;">
-                        <button class="btn btn-info" style="width: 100%" onclick="window.location='login-provider.jsp'">Login as Customer	</button>
+                        <button class="btn btn-info" style="width: 100%" onclick="window.location='login-provider.jsp'">Login as service Provider</button>
+                        <hr style="opacity: 0;">
+                        <button class="btn btn-info" style="width: 100%" onclick="window.location='login-customer.jsp'">Login as Customer	</button>
                     </div> 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

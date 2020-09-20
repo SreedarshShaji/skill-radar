@@ -19,7 +19,7 @@
 %>
 
 <%@include  file="includes/header.jsp"%>
-<% int p = Integer.parseInt(session.getAttribute("provider").toString()); %>
+<% int customer = Integer.parseInt(session.getAttribute("customer").toString()); %>
 <div class="container-fluid slider-div">
     <div class="row">
         <div class="col-md-2 col-xs-1"></div>
@@ -47,6 +47,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Booking person</th>
+                                <th scope="col">Service person</th>
                                 <th scope="col">Location</th>
                                 <th scope="col">Time of booking</th>
                                 <th scope="col">Distance</th>
@@ -56,12 +57,13 @@
                         <tbody>
                             <%
 
-                                PreparedStatement p1 = con.prepareStatement("SELECT * FROM `sr_booking` WHERE `book_provider`='" + p + "'");
+                                PreparedStatement p1 = con.prepareStatement("SELECT * FROM `sr_booking` WHERE `book_customer`='" + customer + "'");
                                 ResultSet rs = p1.executeQuery();
                                 int rc = 0;
                                 while (rs.next()) {
 
                                     String bookingPerson = "";
+                                    String servicePerson = "";
                                     String currentLocation = "";
                                     PreparedStatement p2 = con.prepareStatement("SELECT * FROM `sr_user` WHERE `us_id`='" + rs.getString("book_customer") + "'");
                                     ResultSet rs2 = p2.executeQuery();
@@ -69,15 +71,17 @@
                                         bookingPerson = rs2.getString("us_name");
                                     }
 
-                                    PreparedStatement p3 = con.prepareStatement("SELECT * FROM `sr_service_man` WHERE `ser_id`='" + p + "'");
+                                    PreparedStatement p3 = con.prepareStatement("SELECT * FROM `sr_service_man` WHERE `ser_id`='" + rs.getString("book_provider") + "'");
                                     ResultSet rs3 = p3.executeQuery();
                                     while (rs3.next()) {
+                                        servicePerson = rs3.getString("ser_name");
                                         currentLocation = rs3.getString("ser_location");
                                     }
                             %>
                             <tr>
                                 <th scope="row"><%=++rc%></th>
                                 <td><%=bookingPerson%></td>
+                                <td><%=servicePerson %></td>
                                 <td><%=rs.getString("user_location")%></td>
                                 <td><%=rs.getString("book_date_time")%></td>
                                 <td><%
@@ -97,28 +101,20 @@
                                 </td>
                                 <td>
                                     <%
-
-                                        if (rs.getString("book_status").equals("Open")) {
+  if (rs.getString("book_status").equals("In Progress")) {
                                     %>
-                                    <button type="button" class="btn btn-success" onclick="window.location = 'accept_booking.jsp?id=<%=rs.getString("book_id")%>'">Accept</button><hr>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" onclick="setTheBookingId(<%=rs.getString("book_id") %>)">Reject</button>
-
-                                    <%
-                                    } else if (rs.getString("book_status").equals("In Progress")) {
-                                    %>
-                                <td><a href="https://www.google.com/maps/place/<%=rs.getString("user_location") %>/@<%=rs.getString("user_location") %>,16z" target="_blank"><button class="btn btn-info">View on map</button></a><hr>
-                                <button type="button" class="btn btn-success" onclick="window.location = 'close_booking.jsp?id=<%=rs.getString("book_id")%>'">Close Booking</button></td>
+                                <td><a href="https://www.google.com/maps/place/<%=currentLocation %>/@<%=currentLocation %>,16z" target="_blank"><button class="btn btn-info">View on map</button></a><hr>
                                     
                                     <%
                                         }
 
                                     %>
                                 </td>
-                                <% //if(rs.getString("book_status").equals("Completed") && (rs.getInt("book_rating")>0 || !rs.getString("user_comment").equals("-")))
+                                <% if(rs.getString("book_status").equals("Completed") && (rs.getInt("book_rating")>0 || !rs.getString("user_comment").equals("-")))
                                 {
                                 %>
-                                <!--td><strong>Rating : </strong><%//=rs.getString("book_rating")%></td>
-                                <td><strong>Review : </strong><%//=rs.getString("user_comment")%></td-->
+                                <td><strong>Rating : </strong><%=rs.getString("book_rating")%></td>
+                                <td><strong>Review : </strong><%=rs.getString("user_comment")%></td>
                                 <%
                                 } 
                                 %>
@@ -137,32 +133,7 @@
 
 <!-- Table end -->
 <%@include  file="includes/footer.jsp"%>
-<%
-    if (request.getParameter("insert") != null) {
-        PreparedStatement psmt = con.prepareStatement("INSERT INTO `sr_services_provided` (`sp_category`,`sp_provider`, `sp_service`) VALUES ('" + request.getParameter("cat") + "','" + p + "','" + request.getParameter("service") + "')");
-        psmt.executeUpdate();
-%>
-<script>
-    alert("service added successfully");
-    window.location = "SelectCategory.jsp";
-</script>
-<%
-    }
-    if (request.getParameter("delete") != null) {
-        PreparedStatement psmt = con.prepareStatement("DELETE FROM `sr_services_provided` WHERE `sp_id`='" + request.getParameter("delete") + "'");
-        psmt.executeUpdate();
-%>
-<script>
-    alert("service deleted successfully");
-    window.location = "SelectCategory.jsp";
-</script>
-<%
-    }
-    if (request.getParameter("") != null) {
 
-    }
-
-%>
 
 <!--Rejected booking comment-->
 <script>
