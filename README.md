@@ -20,3 +20,5 @@ Skill radar project
 1:26 am - Monday, 21 September 2020 (IST)  : Code for delivery
 
 10:43 am - Saturday, 17 October 2020 (IST) : Added delete service provider for admin
+
+1:50 pm - Saturday, 17 October 2020 (IST) : Added delete category for admin
