@@ -59,10 +59,10 @@
                     <ul class="nav navbar-nav" id="navbar">
                         <li class="active"><a href="Admin_Add_Categories.jsp">Home</a></li>
                         <li><a href="Admin_Approve_Provider.jsp">Providers</a></li>
-<!--                        <li><a href="Admin_see_bookings.jsp">Booking</a></li>-->
+                        <!--                        <li><a href="Admin_see_bookings.jsp">Booking</a></li>-->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+                        <li><a href="../"><span class="glyphicon glyphicon-log-in"></span>
                                 Log Out</a></li>
                     </ul>
                 </div>
@@ -87,7 +87,32 @@
         </div>
         <br>
         <!--Contact Form  Ends -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-xs-11"></div>
+                <div class="col-md-6 col-xs-11">
+                    <%
+                        if (request.getParameterMap().containsKey("message")) {
 
+                    %>
+                    <div class="row">    
+                        <div class="col-md-1 col-xs-1"></div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="alert alert-<%=request.getParameter("type")%>" role="alert">
+                                <center><%=request.getParameter("message")%></center>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1"></div>
+                    </div>
+                    <%
+
+                        }
+
+                    %>
+                </div>
+                <div class="col-md-3 col-xs-11"></div>
+            </div>
+        </div>
         <!-- Table -->
 
         <div class="container-fluid slider-div">
@@ -106,51 +131,52 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%
+                                    <%                                       
                                         ArrayList<Provider> providerHolder = orm.getProvider();
-
+                                        int rowCount=1;
                                         for (Provider temp : providerHolder) {
                                     %>
                                     <tr>
-                                        <th scope="row"><%=temp.getId()%></th>
+                                        <th scope="row"><%=rowCount++ %></th>
                                         <td><%=temp.getName()%></td>
                                         <td><%=temp.getEmail()%></td>
-                                        <td><a target="_blank" href="https://www.google.com/maps/place/8%C2%B054'56.3%22N+76%C2%B037'31.2%22E/@<%=temp.getLocation()%>,15z"><%=temp.getLocation()%></a></td>
+                                        <td><a target="_blank" href="https://www.google.com/maps/place/8%C2%B054'56.3%22N+76%C2%B037'31.2%22E/@<%=temp.getLocation()%>,15z">See on map</a></td>
+                                        <td><a href="Admin_delete_provider.jsp?id=<%=temp.getId()%>">Delete</a></td>
                                         <!--td><a href="Admin_Approve_Provider.jsp?approve=<%//temp.getId()%>">Approve</a></td-->
                                         <!--td><a href="Admin_Approve_Provider.jsp?suspend=<%//temp.getId()%>">suspend</a></td>
-                                </tr>
+                                </tr-->
                                         <%
                                             }
                                         %>
                                 </tbody>
-                        </table>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="col-md-2 col-xs-11"></div>
+            </div>
         </div>
-</div>
-
-<div class="col-md-2 col-xs-11"></div>
-</div>
-</div>
-                                        <!-- Table End -->
+        <!-- Table End -->
 
 
-                                        </body>
-                                        </html>
+    </body>
+</html>
 
-                                        <%
-                                            Provider p;
-                                            if (request.getParameter("approve") != null) {
-                                                p = orm.getProvider(Integer.parseInt(request.getParameter("approve")));
-                                                if (p.isAvailable() && p.getStatus().equals("Active")) {
-                                        %><script>alert('The user is alread approved and active');</script><%
-                                            } else {
-                                                orm.approveProvider(p);
-                                %><script>alert('The user is approved');</script><%
-                                                    }
-                                                }
+<%
+    Provider p;
+    if (request.getParameter("approve") != null) {
+        p = orm.getProvider(Integer.parseInt(request.getParameter("approve")));
+        if (p.isAvailable() && p.getStatus().equals("Active")) {
+%><script>alert('The user is alread approved and active');</script><%
+} else {
+    orm.approveProvider(p);
+%><script>alert('The user is approved');</script><%
+}
+}
 
-                                                if (request.getParameter("suspend") != null) {
+if (request.getParameter("suspend") != null) {
 
-                                %><script>alert('This will be suspending soon');</script><%     }
+%><script>alert('This will be suspending soon');</script><%     }
 
-                                %>
+%>

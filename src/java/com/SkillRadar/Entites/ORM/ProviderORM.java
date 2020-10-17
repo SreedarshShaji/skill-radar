@@ -101,7 +101,7 @@ public class ProviderORM {
 				+ provider.getName() + "'," + "'" + provider.getEmail() + "','" + provider.getPassword() + "'," + "'"
 				+ provider.getCategories() + "','" + provider.getCategories() + "'," + "'"
 				+ (provider.getLocation().getLatitude() + "," + provider.getLocation().getLongitude()) + "'," + "'"
-				+ provider.getStatus() + "','" + provider.isAvailable() + "')";
+				+ provider.getStatus() + "','Active')";
 		return updateTable(Query);
 	}
 

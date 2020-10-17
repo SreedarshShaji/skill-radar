@@ -32,7 +32,7 @@
 } else {
 %>
 <script>
-    window.location = "login-provider.jsp?type=danger&message=<strong>warning: </strong>The credentials dosn't match";
+    window.location = "login-customer.jsp?type=danger&message=<strong>warning: </strong>The credentials dosn't match";
 </script>
 <%
     }
