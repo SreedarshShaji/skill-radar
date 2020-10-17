@@ -205,7 +205,32 @@
 	</div>
 	<br>
 	<!--Contact Form  Ends -->
+   <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-xs-11"></div>
+                <div class="col-md-6 col-xs-11">
+                    <%
+                        if (request.getParameterMap().containsKey("message")) {
 
+                    %>
+                    <div class="row">    
+                        <div class="col-md-1 col-xs-1"></div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="alert alert-<%=request.getParameter("type")%>" role="alert">
+                                <center><%=request.getParameter("message")%></center>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1"></div>
+                    </div>
+                    <%
+
+                        }
+
+                    %>
+                </div>
+                <div class="col-md-3 col-xs-11"></div>
+            </div>
+        </div>
 	<!-- Table -->
 
 	<div class="container-fluid slider-div">
@@ -226,11 +251,11 @@
 							<tbody>
 								<%
 									ArrayList<ServiceCategory> serviceCategoryHolder = orm.getServiceCategories();
-
+                                                                       int row=1;      
 									for (ServiceCategory temp : serviceCategoryHolder) {
 								%>
 								<tr>
-									<th scope="row"><%=temp.getId()%></th>
+									<th scope="row"><%=row++%></th>
 									<td><%=temp.getName()%></td>
 									<td><%=temp.getDescription()%></td>
 									<td><img width="150px" src="<%=temp.getPhoto()%>"></td>
@@ -322,7 +347,7 @@
 		var res=confirm("Do you want to delete?");
 		if(res)
 			{
-			window.location="Admin_Add_Categories.jsp?delId="+id;
+			window.location="Admin_delete_category.jsp?delId="+id;
 			}
 	}
 </script>
